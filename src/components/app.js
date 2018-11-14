@@ -2,6 +2,7 @@ import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize';
 import '../assets/css/app.css';
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 import axios from 'axios';
 import List from './list';
 import AddItem from './add_item';
@@ -79,21 +80,19 @@ class App extends Component {
 
         return (
             <div className="container">
-                <h1 className="center">To Do List</h1>
 
-                <AddItem add={this.addItem}/>
+                <Route exact path="/" render={() => {
+                    return <List delete={this.deleteItem} data={list} error={error}/>
+                }}/>   
 
-                {
-                    error
-                        ? <h1 className="center red-text">{error}</h1>
-                        : <List delete={this.deleteItem} data={this.state.list}/>
-
-                }
+                 <Route path="/add-item" render={() => {
+                    return <AddItem add={this.addItem} />
+                }}/>  
 
 
             </div>
         );
-    }
+    };
 }
 
 export default App;

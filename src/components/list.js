@@ -13,7 +13,7 @@ class List extends Component {
                     </div>
 
                     <div className="col s4 right-align">
-                        <button onClick={() => { this.props.delete(index) }} className="btn red darken-2">Delete</button>
+                        <button onClick={() => { this.props.delete(item._id) }} className="btn red darken-2">Delete</button>
                     </div>
 
                 </li>
